@@ -2,13 +2,52 @@
 \usepackage{graphicx} % Required for inserting images
 
 \title{Markets and the Media}
-\author{zachary.h.hafen }
 \date{May 2023}
 
 \begin{document}
 
-\maketitle
+\section*{Prompt}
 
-\section{Introduction}
+Can we predict future market trends based on news media sentiment?
+Market trends will be extracted using the YFinance API.
+News media sentiment will be extracted from the NYTimes using the NYTimes API (or possibly the Financial Times depending on availability).
+Sentiment analysis will be done using natural language processing (via either TextBlob or NLTK).
+We will visualize the relationship between a metric of sentiment analysis vs stock price at time $t - t_{\rm article\,published}$, for articles purportedly related to the stock (likely via word match).
+Following visualization, we will train a ML regression model to the data.
+
+\section*{Project Goals}
+
+\subsection*{Stakeholders}
+
+% Market prediction stakeholders
+We identified two primary groups of stakeholders.
+One group are financial analysts who might profit by predicting market trends.
+These stakeholders will only benefit if there is indeed a correlation between media sentiment and change in stock price.
+
+% Media prediction stakeholders
+The second group of stakeholders are the PR departments of companies whose stock is being tracked.
+These stakeholders will benefit if there is a correlation between change in stock price and subsequent publication of a media piece.
+In particular, these PR departments would benefit from an ``advanced warning system'' that alerts them to the increased likelihood of the publishing of a negative (or positive) article.
+
+% On which we focus on
+We will focus on the second group of stakeholders, the PR departments, because it is well-known how challenging it is to predict the market, and if such an approach was successful it would likely already be employed.
+
+\subsection*{Key Performance Indicators}
+
+To discuss the KPIs we define the following variables.
+An article indexed by $i$ is published at time $t_i$, has sentiment $s_i$, and polarity $p_i$.
+The total number of articles published within a given range of time, sentiment, and polarity $N( t, T, s, S, p, P) = \sum_i 1$, where $t_i \in [ t, T ]$, $s_i \in [ s, S ]$, and $p_i \in [ p, P ]$.
+The stock price at time $t$ will be indicated by $y(t)$,
+and the change in stock price between two times $t$ and $t + \tau$ will be indicated by $\Delta y(t,\tau) \equiv y(t + \tau) - y(t)$.
+
+Defined as such, KPIs include\ldots
+\begin{itemize}
+    \item The covariance between $p_i$ and $\Delta y(t_i,\tau)$, i.e. $\sigma( p_i, \Delta y(t_i, \tau))$, where $\tau$ is a time-delta hyper-parameter to optimize over to find the maximum absolute covariance. If this covariance is inconsistent with no covariance then it may be possible to predict $\Delta y(t, \tau)$ based on $p_i$.
+    \item The same metric for $s_i$.
+    \item The covariance between $\Delta y(t-\tau, \tau)$ and $N(t, T, s, S, p, P )$, i.e. $\sigma( \Delta y(t-\tau, \tau), N(t, T, s, S, p, P ))$, where $\tau$, $T$, $s$, $S$, $p$, and $P$ are hyperparameters. If this covariance is unlikely to be consistent with zero, then it may be possible to predict the publication of articles following a change in stock.
+    \item The extent to which predictions drawing on the above trends are better than random guesses (where the baseline model is poisson distribution fit to the data).
+\end{itemize}
+
+\section*{Modeling Approach}
 
 \end{document}
