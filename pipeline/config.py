@@ -13,9 +13,9 @@ pm = {
     'ticker': 'GOOGL',
     
     # Time ranges
-    'start_date': datetime(2020,1,1),
+    'start_date': datetime(2010,1,1),
     'end_date': datetime(2022,12,31),
     # Everything between start_date_test and end_date is part of the test data set.
     # Everything between start_date and start_date_test is part of the training data set.
-    'start_date_test': datetime(2022,1,1),
+    'start_date_test': datetime(2021,1,1),
 }
