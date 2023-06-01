@@ -10,6 +10,7 @@ pm = {
     # Identifying information for the company in question.
     'organizations': [ 'Google Inc', 'Alphabet Inc' ],
     'keyword': 'google',
+    'ticker': 'GOOGL',
     
     # Time ranges
     'start_date': datetime(2020,1,1),
