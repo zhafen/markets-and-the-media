@@ -6,14 +6,14 @@
 
 \begin{document}
 
-\section*{Prompt}
+\section*{Executive Summary}
 
 Can we predict future market trends based on news media sentiment?
 Market trends will be extracted using the YFinance API.
 News media sentiment will be extracted from the NYTimes using the NYTimes API (or possibly the Financial Times depending on availability).
-Sentiment analysis will be done using natural language processing (via either TextBlob or NLTK).
+Sentiment analysis will be done using natural language processing.
 We will visualize the relationship between a metric of sentiment analysis vs stock price at time $t - t_{\rm article\,published}$, for articles purportedly related to the stock (likely via word match).
-Following visualization, we will train a ML regression model to the data.
+Following visualization, we will train an ML regression model to the data.
 
 \section*{Project Goals}
 
@@ -49,5 +49,45 @@ Defined as such, KPIs include\ldots
 \end{itemize}
 
 \section*{Modeling Approach}
+Here, we give modeling approaches for both predicting stock trends from the news, as well as, predicting article publications based on the market.
+
+\vspace{0.1 in}
+
+{Models relevant to predicting stock trends from the news, and predicting article publications based on the market:}
+\begin{itemize}
+    \item \textbf{Planned:} Extract sentiment using TextBlob, and NLTK 
+    \item \textbf{Planned:} Extract market data using YFinance API.
+    \item \textbf{Planned:} Extract news data from NYTimes API.
+    \item \textbf{Planned:} Visualize histogram of stock relative to time of publication.
+    \item \textbf{Adapted along the way:} Extract sentiment using FinBERT.
+\end{itemize}
+
+\vspace{0.1 in}
+
+{Modeling approaches for predicting stock trends from the news:}
+\begin{itemize}
+    \item \textbf{Planned:} Linear Regression
+    \item \textbf{Planned:} Random Forest Regression
+    \item \textbf{Planned:} Decision Tree Regression
+    \item \textbf{Planned:} SVR
+    \item \textbf{Planned:} Gradient Boosting Regressor
+    \item \textbf{Adapted along the way:} Improved baseline (current stock)
+    \item \textbf{Adapted along the way:} Modeling using difference in stock, not stock itself
+\end{itemize}
+
+\vspace{0.1 in}
+
+
+{Modeling approaches for predicting article publications based on the market:}
+\begin{itemize}
+    \item \textbf{Planned:} Mean baseline
+    \item \textbf{Planned:} Poisson baseline
+    \item \textbf{Planned:} Linear regression
+    \item \textbf{Planned:} Neural net
+    \item \textbf{Planned:} Recurrent neural net
+    \item \textbf{Planned:} Try both classification and regression versions of the above when possible
+    \item \textbf{Adapted along the way:}  ARIMA
+    \item \textbf{Adapted along the way:} No Stock info
+\end{itemize}
 
 \end{document}
